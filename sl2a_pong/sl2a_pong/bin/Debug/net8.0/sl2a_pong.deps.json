@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "sl2a_pong/1.0.0": {
+        "runtime": {
+          "sl2a_pong.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "sl2a_pong/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
