@@ -123,7 +123,7 @@ namespace Pong
 
                     if (!isMultiplayer)
                     {
-                        UpdateAI(ref rightRacketHeight, ballY, difficulty, fieldWidth, racketLength);
+                        UpdateBot(ref rightRacketHeight, ballY, difficulty, fieldWidth, racketLength);
                     }
                 }
 
@@ -175,18 +175,18 @@ namespace Pong
             }
         }
 
-        private static void UpdateAI(ref int rightRacketHeight, int ballY, Difficulty difficulty, int fieldWidth, int racketLength)
+        private static void UpdateBot(ref int rightRacketHeight, int ballY, Difficulty difficulty, int fieldWidth, int racketLength)
         {
             int reactionSpeed = difficulty switch
             {
                 Difficulty.Easy => 6,
                 Difficulty.Medium => 4,
                 Difficulty.Hard => 2,
-                Difficulty.Impossible => 1,
+                Difficulty.Impossible => 0,
                 _ => 4
             };
 
-            // Adjust AI racket position based on the position of the ball
+            // Adjust bot racket position based on the position of the ball
             if (ballY < rightRacketHeight + 1)
             {
                 rightRacketHeight = Math.Max(0, rightRacketHeight - 1);

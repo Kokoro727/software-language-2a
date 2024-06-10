@@ -6,12 +6,38 @@ namespace Pong
     {
         public static void difficulty()
         {
-            Console.WriteLine("Select Mode: 1. Play against AI  2. Play against Friend");
+            Console.Clear();
+            Console.WriteLine("═══════════════════════════════════════════════════════════════");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");  
+            Console.WriteLine("║Select Mode: 1. Play against AI  2. Play against Friend      ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("║                                                             ║");
+            Console.WriteLine("═══════════════════════════════════════════════════════════════");
             string modeInput = Console.ReadLine();
 
             if (modeInput == "1")
             {
-                Console.WriteLine("Select Difficulty: 1. Easy  2. Medium  3. Hard  4. Impossible");
+                Console.Clear();
+                Console.WriteLine("═══════════════════════════════════════════════════════════════");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║Select Difficulty: 1. Easy  2. Medium  3. Hard  4. Impossible║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("║                                                             ║");
+                Console.WriteLine("═══════════════════════════════════════════════════════════════");
                 string difficultyInput = Console.ReadLine();
                 Difficulty difficulty = Difficulty.Medium;
 
