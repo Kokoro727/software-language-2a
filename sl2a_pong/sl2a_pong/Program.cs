@@ -17,7 +17,7 @@ namespace Pong
                 switch (input)
                 {
                     case "1":
-                        pongHandler.playPong();
+                        Diff.difficulty();
                         break;
                     case "2":
                         DisplayDateTime();
@@ -51,7 +51,7 @@ namespace Pong
             string[] menuItems = {
                 "Main Menu",
                 "",
-                "1. Play pong",
+                "1. Choose gamemode",
                 "2. Display Date and Time",
                 "3. Exit",
                 "",

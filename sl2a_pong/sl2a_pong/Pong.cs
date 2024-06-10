@@ -1,31 +1,27 @@
 ﻿using System;
 using System.Linq;
-using System.Security.AccessControl;
+using System.Threading;
 
 namespace Pong
 {
-
-
     public static class pongHandler
     {
-        public static void playPong()
+        public static void PlayPong(bool isMultiplayer, Difficulty difficulty)
         {
             Console.Clear();
             const int fieldLength = 50, fieldWidth = 15;
             const char fieldTile = '#';
             string line = string.Concat(Enumerable.Repeat(fieldTile, fieldLength));
-            
 
             const int racketLength = fieldWidth / 4;
             const char racketTile = '|';
-
 
             int leftRacketHeight = 0;
             int rightRacketHeight = 0;
 
             int ballX = fieldLength / 2;
             int ballY = fieldWidth / 2;
-            const char ballTile = 'O';
+            const char ballTile = 'o';
 
             bool isBallGoingDown = true;
             bool isBallGoingRight = true;
@@ -53,7 +49,7 @@ namespace Pong
                     Console.WriteLine(racketTile);
                 }
 
-                while(!Console.KeyAvailable)
+                while (!Console.KeyAvailable)
                 {
                     Console.SetCursorPosition(ballX, ballY);
                     Console.WriteLine(ballTile);
@@ -62,7 +58,7 @@ namespace Pong
                     Console.SetCursorPosition(ballX, ballY);
                     Console.WriteLine(' ');
 
-                    if(isBallGoingDown)
+                    if (isBallGoingDown)
                     {
                         ballY++;
                     }
@@ -70,7 +66,7 @@ namespace Pong
                     {
                         ballY--;
                     }
-                    if(isBallGoingRight)
+                    if (isBallGoingRight)
                     {
                         ballX++;
                     }
@@ -79,14 +75,14 @@ namespace Pong
                         ballX--;
                     }
 
-                    if(ballY == 1 || ballY == fieldWidth - 1)
+                    if (ballY == 1 || ballY == fieldWidth - 1)
                     {
                         isBallGoingDown = !isBallGoingDown;
                     }
 
-                    if(ballX  == 1)
+                    if (ballX == 1)
                     {
-                        if(ballY >= leftRacketHeight + 1 && ballY <= leftRacketHeight + racketLength)
+                        if (ballY >= leftRacketHeight + 1 && ballY <= leftRacketHeight + racketLength)
                         {
                             isBallGoingRight = !isBallGoingRight;
                         }
@@ -98,7 +94,7 @@ namespace Pong
                             Console.SetCursorPosition(scoreboardX, scoreboardY);
                             Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
 
-                            if(rightPlayerPoints == 11)
+                            if (rightPlayerPoints == 11)
                             {
                                 goto outer;
                             }
@@ -125,12 +121,16 @@ namespace Pong
                         }
                     }
 
+                    if (!isMultiplayer)
+                    {
+                        UpdateAI(ref rightRacketHeight, ballY, difficulty, fieldWidth, racketLength);
+                    }
                 }
 
-                switch(Console.ReadKey().Key)
+                switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.UpArrow:
-                        if(rightRacketHeight > 0)
+                        if (rightRacketHeight > 0)
                         {
                             rightRacketHeight--;
                         }
@@ -148,7 +148,7 @@ namespace Pong
                         }
                         break;
                     case ConsoleKey.S:
-                        if (leftRacketHeight < fieldWidth - racketLength -1)
+                        if (leftRacketHeight < fieldWidth - racketLength - 1)
                         {
                             leftRacketHeight++;
                         }
@@ -165,7 +165,7 @@ namespace Pong
         outer:;
             Console.Clear();
             Console.SetCursorPosition(0, 0);
-            if(rightPlayerPoints == 11)
+            if (rightPlayerPoints == 11)
             {
                 Console.WriteLine("Right player won!");
             }
@@ -174,6 +174,30 @@ namespace Pong
                 Console.WriteLine("Left player won!");
             }
         }
-    }
 
+        private static void UpdateAI(ref int rightRacketHeight, int ballY, Difficulty difficulty, int fieldWidth, int racketLength)
+        {
+            int reactionSpeed = difficulty switch
+            {
+                Difficulty.Easy => 6,
+                Difficulty.Medium => 4,
+                Difficulty.Hard => 2,
+                Difficulty.Impossible => 1,
+                _ => 4
+            };
+
+            // Adjust AI racket position based on the position of the ball
+            if (ballY < rightRacketHeight + 1)
+            {
+                rightRacketHeight = Math.Max(0, rightRacketHeight - 1);
+            }
+            else if (ballY > rightRacketHeight + racketLength - 1)
+            {
+                rightRacketHeight = Math.Min(fieldWidth - racketLength - 1, rightRacketHeight + 1);
+            }
+
+            // AI reaction speed: delay movement to simulate different difficulties
+            Thread.Sleep(reactionSpeed * 10);
+        }
+    }
 }
