@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.AccessControl;
 
 namespace Pong
 {
@@ -12,6 +13,7 @@ namespace Pong
             const int fieldLength = 50, fieldWidth = 15;
             const char fieldTile = '#';
             string line = string.Concat(Enumerable.Repeat(fieldTile, fieldLength));
+            
 
             const int racketLength = fieldWidth / 4;
             const char racketTile = '|';
@@ -35,6 +37,7 @@ namespace Pong
 
             while (true)
             {
+                Console.CursorVisible = false;
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine(line);
 

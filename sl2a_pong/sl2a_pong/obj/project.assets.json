@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Fouad/Projects/sl2a_pong/sl2a_pong/sl2a_pong.csproj",
+      "projectUniqueName": "/Users/Fouad/Documents/GitHub/ADSD/software-language-2a/sl2a_pong/sl2a_pong/sl2a_pong.csproj",
       "projectName": "sl2a_pong",
-      "projectPath": "/Users/Fouad/Projects/sl2a_pong/sl2a_pong/sl2a_pong.csproj",
+      "projectPath": "/Users/Fouad/Documents/GitHub/ADSD/software-language-2a/sl2a_pong/sl2a_pong/sl2a_pong.csproj",
       "packagesPath": "/Users/Fouad/.nuget/packages/",
-      "outputPath": "/Users/Fouad/Projects/sl2a_pong/sl2a_pong/obj/",
+      "outputPath": "/Users/Fouad/Documents/GitHub/ADSD/software-language-2a/sl2a_pong/sl2a_pong/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/Fouad/.nuget/NuGet/NuGet.Config"
