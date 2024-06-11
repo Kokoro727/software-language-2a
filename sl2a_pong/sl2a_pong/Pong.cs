@@ -6,7 +6,7 @@ namespace Pong
 {
     public static class pongHandler
     {
-        public static void PlayPong(bool isMultiplayer, Difficulty difficulty)
+        public static void PlayPong()
         {
             Console.Clear();
             const int fieldLength = 50, fieldWidth = 15;
@@ -14,7 +14,7 @@ namespace Pong
             string line = string.Concat(Enumerable.Repeat(fieldTile, fieldLength));
 
             const int racketLength = fieldWidth / 4;
-            const char racketTile = '|';
+            const char racketTile = '║';
 
             int leftRacketHeight = 0;
             int rightRacketHeight = 0;
@@ -53,7 +53,7 @@ namespace Pong
                 {
                     Console.SetCursorPosition(ballX, ballY);
                     Console.WriteLine(ballTile);
-                    Thread.Sleep(100);
+                    
 
                     Console.SetCursorPosition(ballX, ballY);
                     Console.WriteLine(' ');
@@ -120,11 +120,11 @@ namespace Pong
                             }
                         }
                     }
+                    Thread.Sleep(100);
 
-                    if (!isMultiplayer)
-                    {
-                        UpdateBot(ref rightRacketHeight, ballY, difficulty, fieldWidth, racketLength);
-                    }
+                   
+
+                  
                 }
 
                 switch (Console.ReadKey().Key)
@@ -173,31 +173,6 @@ namespace Pong
             {
                 Console.WriteLine("Left player won!");
             }
-        }
-
-        private static void UpdateBot(ref int rightRacketHeight, int ballY, Difficulty difficulty, int fieldWidth, int racketLength)
-        {
-            int reactionSpeed = difficulty switch
-            {
-                Difficulty.Easy => 6,
-                Difficulty.Medium => 4,
-                Difficulty.Hard => 2,
-                Difficulty.Impossible => 0,
-                _ => 4
-            };
-
-            // Adjust bot racket position based on the position of the ball
-            if (ballY < rightRacketHeight + 1)
-            {
-                rightRacketHeight = Math.Max(0, rightRacketHeight - 1);
-            }
-            else if (ballY > rightRacketHeight + racketLength - 1)
-            {
-                rightRacketHeight = Math.Min(fieldWidth - racketLength - 1, rightRacketHeight + 1);
-            }
-
-            // AI reaction speed: delay movement to simulate different difficulties
-            Thread.Sleep(reactionSpeed * 10);
         }
     }
 }
