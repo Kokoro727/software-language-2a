@@ -32,15 +32,15 @@ public class pongHandler
 
         fieldLength = 50; 
         fieldWidth = 15;
-        fieldTile = '#';
+        fieldTile = "#";
         line = string.Concat(Enumerable.Repeat(fieldTile, fieldLength));
         racketLength = fieldWidth / 4;
-        racketTile = '|';
+        racketTile = "|";
         leftRacketHeight = 0;
         rightRacketHeight = 0;
         ballX = fieldLength / 2;
         ballY = fieldWidth / 2;
-        ballTile = 'O';
+        ballTile = "O";
         isBallGoingDown = true;
         isBallGoingRight = true;
         leftPlayerPoints = 0;
