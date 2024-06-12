@@ -4,7 +4,7 @@ using System.Security.AccessControl;
 
 namespace Pong;
 
-public class pongHandler
+public class PongHandler
 {
     //define variables
     private string fieldTile;
@@ -25,8 +25,9 @@ public class pongHandler
 
     private bool isBallGoingDown;
     private bool isBallGoingRight;
+    private bool runTime;
 
-    public pongHandler() 
+    public PongHandler() 
     {
         //Consructor to initialise variables
 
@@ -47,13 +48,14 @@ public class pongHandler
         rightPlayerPoints = 0;
         scoreboardX = fieldLength / 2 - 2;
         scoreboardY = fieldWidth + 3;
+        runTime = true;
     }
 
     public void playPong()
     {
         Console.Clear();
 
-        while (true)
+        while (runTime)
         {
             //hide the cursor
             Console.CursorVisible = false;
@@ -118,9 +120,9 @@ public class pongHandler
                         Console.SetCursorPosition(scoreboardX, scoreboardY);
                         Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
 
-                        if(rightPlayerPoints == 11)
+                        if(rightPlayerPoints > 10)
                         {
-                            goto outer;
+                            DisplayWinner();
                         }
                     }
                 }
@@ -138,9 +140,9 @@ public class pongHandler
                         Console.SetCursorPosition(scoreboardX, scoreboardY);
                         Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
 
-                        if (leftPlayerPoints == 11)
+                        if (leftPlayerPoints > 10)
                         {
-                            displayWinner();
+                            DisplayWinner();
                         }
                     }
                 }
@@ -187,7 +189,7 @@ public class pongHandler
             }
         }
     }
-    public void displayWinner()
+    public void DisplayWinner()
     {
         //empty the console
         Console.Clear();
@@ -202,5 +204,6 @@ public class pongHandler
         {
             Console.WriteLine("Left player won!");
         }
+        runTime = false;
     }
 }

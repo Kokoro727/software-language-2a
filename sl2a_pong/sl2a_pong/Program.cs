@@ -1,4 +1,6 @@
+using sl2a_pong;
 using System;
+using System.ComponentModel.Design;
 
 namespace Pong;
 
@@ -14,7 +16,7 @@ class Program
 
             //define and initialise classes
             Menu menu = new Menu();
-            pongHandler pong = new pongHandler();
+            PongHandler pong = new PongHandler();
 
             string input = Console.ReadLine();
             switch (input)
