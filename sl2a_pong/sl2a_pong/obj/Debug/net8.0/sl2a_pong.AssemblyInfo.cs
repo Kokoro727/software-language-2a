@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sl2a_pong")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+569962440eeb1560a1bee5799a71993987db0ccc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+718e17f5ad6052c26cfe313f304d820dd284eb0b")]
 [assembly: System.Reflection.AssemblyProductAttribute("sl2a_pong")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sl2a_pong")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

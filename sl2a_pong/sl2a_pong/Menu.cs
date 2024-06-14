@@ -59,6 +59,7 @@ namespace sl2a_pong
             //Console.WriteLine($"Current Date and Time: {DateTime.Now}");
             dateAndTime = $"Current Date and Time: {DateTime.Now}";
             Thread thread1 = new Thread(new ThreadStart(Print));
+            thread1.Start();
         }
 
         // a method derived from ProgramBase to implement a method to print to the console
