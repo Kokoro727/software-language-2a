@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Security.AccessControl;
 
+using baseClass;
+
 namespace Pong;
 
-public class PongHandler
+public class PongHandler : ProgramBase
 {
     //define variables
     private string fieldTile;
@@ -30,7 +32,6 @@ public class PongHandler
     public PongHandler() 
     {
         //Consructor to initialise variables
-
         fieldLength = 50; 
         fieldWidth = 15;
         fieldTile = "#";
@@ -61,28 +62,34 @@ public class PongHandler
             Console.CursorVisible = false;
             //move the cursor to the top left corner and print a "line"
             Console.SetCursorPosition(0, 0);
-            Console.WriteLine(line);
+            //Console.WriteLine(line);
+            Print(line);
             //move the cursor to another position and print another "line"
             Console.SetCursorPosition(0, fieldWidth);
-            Console.WriteLine(line);
+            //Console.WriteLine(line);
+            Print(line);
 
             for (int i = 0; i < racketLength; i++)
             {
                 //print the racket that the player will use to deflect the ball
                 Console.SetCursorPosition(0, i + 1 + leftRacketHeight);
-                Console.WriteLine(racketTile);
+                //Console.WriteLine(racketTile);
+                Print(racketTile);
                 Console.SetCursorPosition(fieldLength - 1, i + 1 + rightRacketHeight);
-                Console.WriteLine(racketTile);
+                //Console.WriteLine(racketTile);
+                Print(racketTile);
             }
 
             while(!Console.KeyAvailable)
             {
                 Console.SetCursorPosition(ballX, ballY);
-                Console.WriteLine(ballTile);
+                //Console.WriteLine(ballTile);
+                Print(ballTile);
                 Thread.Sleep(100);
 
                 Console.SetCursorPosition(ballX, ballY);
-                Console.WriteLine(' ');
+                //Console.WriteLine(' ');
+                Print(" ");
 
                 if(isBallGoingDown)
                 {
@@ -118,7 +125,8 @@ public class PongHandler
                         ballY = fieldWidth / 2;
                         ballX = fieldLength / 2;
                         Console.SetCursorPosition(scoreboardX, scoreboardY);
-                        Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
+                        //Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
+                        Print($"{leftPlayerPoints} | {rightPlayerPoints}");
 
                         if(rightPlayerPoints > 10)
                         {
@@ -138,7 +146,8 @@ public class PongHandler
                         ballY = fieldWidth / 2;
                         ballX = fieldLength / 2;
                         Console.SetCursorPosition(scoreboardX, scoreboardY);
-                        Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
+                        //Console.WriteLine($"{leftPlayerPoints} | {rightPlayerPoints}");
+                        Print($"{leftPlayerPoints} | {rightPlayerPoints}");
 
                         if (leftPlayerPoints > 10)
                         {
@@ -183,9 +192,11 @@ public class PongHandler
             {
                 //print empty space betwee the two walls.
                 Console.SetCursorPosition(0, i);
-                Console.WriteLine(" ");
+                //Console.WriteLine(" ");
+                Print(" ");
                 Console.SetCursorPosition(fieldLength - 1, i);
-                Console.WriteLine(" ");
+                //Console.WriteLine(" ");
+                Print(" ");
             }
         }
     }
@@ -198,12 +209,20 @@ public class PongHandler
         //display a message at the position of the cursor
         if (rightPlayerPoints > 10)
         {
-            Console.WriteLine("Right player won!");
+            //Console.WriteLine("Right player won!");
+            Print("Right player won!");
         }
         else
         {
-            Console.WriteLine("Left player won!");
+            //Console.WriteLine("Left player won!");
+            Print("Left player won!");
         }
         runTime = false;
+    }
+
+    // a method derived from ProgramBase to implement a method to print to the console
+    public override void Print(String message)
+    {
+        Console.WriteLine(message);
     }
 }

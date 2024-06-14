@@ -1,10 +1,11 @@
 using sl2a_pong;
+using baseClass;
 using System;
 using System.ComponentModel.Design;
 
 namespace Pong;
 
-class Program
+class Program : ProgramBase
 {
     static void Main(string[] args)
     {
@@ -32,14 +33,18 @@ class Program
                     break;
                 default:
                     Console.WriteLine("Invalid option. Please try again.");
+                    //this.Print("Invalid option. Please try again.");
                     break;
             }
 
             if (!exit)
             {
                 Console.WriteLine("\nPress any key to return to the main menu...");
+                //this.Print("\nPress any key to return to the main menu...");
                 Console.ReadKey();
             }
         }
+
+
     }
 }
